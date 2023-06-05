@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 public class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleException(UserNotFoundException exc){
+    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException exc){
         ErrorResponse error = new ErrorResponse();
 
         error.setMessage(exc.getMessage());

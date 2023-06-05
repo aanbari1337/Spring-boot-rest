@@ -17,8 +17,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "email")
-    private String email;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -35,11 +33,13 @@ public class User {
     }
 
     public User(String email, String firstName, String lastName) {
-        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
 
     }
+
+
+
 
     public int getId() {
         return id;
@@ -73,11 +73,5 @@ public class User {
         this.roles = roles;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

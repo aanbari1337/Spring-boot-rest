@@ -6,6 +6,8 @@ import com.aanbari.restfulwebservice.restfulwebservice.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -16,7 +18,14 @@ public class UserService {
         return userRepository.save(user);
     }
     public User getUserById(int id) throws UserNotFoundException {
-        return userRepository.getById(id);
+
+        Optional<User> user = userRepository.findById(id);
+
+        if(user.isEmpty()) {
+            throw new UserNotFoundException("User not found with ID: " + id);
+        }
+
+        return user.get();
     }
     public void deleteUser(int id){
          userRepository.deleteById(id);
